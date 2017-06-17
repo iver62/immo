@@ -1,0 +1,54 @@
+<div class="container col-xs-8 col-sm-6 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-4 spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading">Saisie d'un logement</div>
+		<div class="panel-body">
+			<form (ngSubmit)="onHouseSubmit()" [formGroup]="formGroupHouse">
+				<div class="form-group">
+					<input type="text" formControlName="designation" id="designation" class="form-control" placeholder="Désignation">
+					<span [hidden]="formGroupHouse.controls.designation.valid" class="text-danger">*</span>
+				</div>
+				<div class="form-group">
+					<input class="form-control" formControlName="surface" type="number" value="0" min="0" id="surface" placeholder="Surface">
+					<span [hidden]="formGroupHouse.controls.surface.valid" class="text-danger">*</span>
+				</div>
+				<div class="form-group">
+					<input class="form-control" formControlName="nbPieces" type="number" value="0" min="0" id="nbPieces" placeholder="Nombre de pièces">
+					<span [hidden]="formGroupHouse.controls.nbPieces.valid" class="text-danger">*</span>
+				</div>
+				<div class="form-group">
+					<input type="text" formControlName="adresse" id="adresse" class="form-control" placeholder="Adresse">
+					<span [hidden]="formGroupHouse.controls.adresse.valid" class="text-danger">*</span>
+				</div>
+				<div class="form-group">
+					<input class="form-control" formControlName="loyer" type="number" value="0" min="0" id="loyer" placeholder="Loyer">
+					<span [hidden]="formGroupHouse.controls.loyer.valid" class="text-danger">*</span>
+				</div>
+				<!--<div class="file-field">
+					<div class="btn btn-primary btn-sm">
+							<span>Choose file</span>
+							<input type="file">
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text" placeholder="Upload your file">
+					</div>
+			</div>-->
+				<div class="form-group">
+					<input type="file" formControlName="photo" class="form-control" (change)="onChange($event)">
+				</div>
+				<div class="form-group">
+					<select formControlName="statut" id="statut" class="form-control" placeholder="Statut">
+						<option value="" selected="true" disabled>Statut</option>
+						<option value="Disponible">Disponible</option>
+						<option value="Occupé">Occupé</option>
+						<option value="En attente">En attente</option>
+						<option value="En réparation">En réparation</option>
+					</select>
+					<span [hidden]="formGroupHouse.controls.statut.valid" class="text-danger">*</span>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

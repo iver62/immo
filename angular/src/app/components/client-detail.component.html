@@ -1,0 +1,27 @@
+<div *ngIf="client">
+	<div class="container col-md-6 col-md-offset-3 spacer" style="position: absolute">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Bails de {{client.prenomClient}} {{client.nomClient}}</h3>
+			</div>
+			<div class="panel-body">	
+				<table class="table table-striped">
+					<thead>
+						<th>#</th>
+						<th>Début</th>
+						<th>Fin</th>
+					</thead>
+					<tbody>
+						<tr *ngFor="let bail of bails">
+							<td>{{ bail.idBail }}</td>
+							<td>{{ bail.dateDebut | date: 'dd/MM/yyyy' }}</td>
+							<td>{{ bail.dateFin | date: 'dd/MM/yyyy' }}</td>
+							<td><a [routerLink]="['/house', bail.logement.idLogement]"><img src="assets/images/{{ bail.logement.photo }}" class="img-circle" height="75" width="100"/></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<button class="btn btn-primary" (click)="goBack()">Back</button>
+	</div>
+</div>

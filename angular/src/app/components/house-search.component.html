@@ -1,0 +1,8 @@
+<div id="search-component" class="spacer">
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="House search..."/>
+  <div>
+    <div *ngFor="let house of houses | async" (click)="gotoDetail(house)" class="search-result" >
+      {{house.designation}}
+    </div>
+  </div>
+</div>

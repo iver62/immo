@@ -1,0 +1,66 @@
+<!--<div class="">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" routerLink="/home">Accueil</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a routerLink="/houses" class="dropdown-toggle" data-toggle="dropdown">Logements
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a routerLink="/houses">Tous</a></li>
+						<li><a href="#">Occupés</a></li>
+						<li><a href="#">Libres</a></li> 
+					</ul>
+				</li>
+				<li><a routerLink="/houses">Logements</a></li>
+				<li><a routerLink="/clients">Clients</a></li>
+				<li><a routerLink="/bails">Bails</a></li>
+				<li><a routerLink="/addHouse">Ajouter un logement</a></li>
+				<li><a routerLink="/addClient">Ajouter un client</a></li>
+				<li><a routerLink="/addBail">Ajouter un bail</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>-->
+
+<div id='cssmenu'>
+	<ul>
+		<li><a routerLink="/home"><span>Home</span></a></li>
+		<li class='active has-sub'><a [routerLink]="['/houses', 'all']"><span>Logements</span></a>
+			<ul>
+				<!--<li class='has-sub'><a [routerLink]="['/houses', 'all']"><span>Tous</span></a></li>-->
+				<li class='has-sub'><a [routerLink]="['/houses', 'dispo']"><span>Disponibles</span></a></li>
+				<li class='has-sub'><a [routerLink]="['/houses', 'occupe']"><span>Occupés</span></a></li>
+				<li class='has-sub'><a [routerLink]="['/houses', 'attente']"><span>En attente</span></a></li>
+				<li class='has-sub'><a [routerLink]="['/houses', 'reparation']"><span>En réparation</span></a></li>
+				<li class="divider"></li>
+				<li class='has-sub'><a routerLink="/addHouse"><span>Ajouter</span></a></li>
+			</ul>
+		</li>
+		<li class='active has-sub'><a routerLink="/clients"><span>Clients</span></a>
+			<ul>
+				<li><a routerLink="/addClient"><span>Ajouter</span></a></li>
+			</ul>
+		</li>
+		<!--<li><a routerLink="/clients">Clients</a></li>-->
+		<li class='active has-sub'><a [routerLink]="['/bails', 'all']"><span>Bails</span></a>
+			<ul>
+				<li><a [routerLink]="['/bails', 'now']"><span>En cours</span></a></li>
+				<li><a routerLink="/addBail"><span>Ajouter</span></a></li>
+			</ul>
+		</li>
+		<!--<li><a routerLink="/addHouse">Ajouter un logement</a></li>-->
+		<!--<li><a routerLink="/addClient">Ajouter un client</a></li>-->
+		<!--<li class="last"><a routerLink="/addBail">Ajouter un bail</a></li>-->
+	</ul>
+</div>
+
+<router-outlet></router-outlet>
+
+<!--<footer>
+	<div class="navbar navbar-fixed-bottom">
+		<p>Put together in less than five minutes by <a href="http://www.martinbean.co.uk/" rel="author">Martin Bean</a>. Uses <a href="http://twitter.github.com/bootstrap/" rel="external">Twitter Bootstrap</a> and <a href="http://ryanfait.com/sticky-footer/" rel="external">Ryan Fait’s Sticky Footer</a> and <a href="#">Aalaap Ghag’s Responsive Padding Fix</a>.</p>
+	</div>
+</footer>-->

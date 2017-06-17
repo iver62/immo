@@ -1,0 +1,95 @@
+<div class="container col-md-10 col-md-offset-1 spacer">
+	
+<!--	<div>
+		<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+			<div>
+				<div class="btn-group spacer" data-toggle="buttons">
+					<label class="btn active">
+						<input type="radio" class="form-control" formControlName="filter" value="all" checked>
+						<i class="fa fa-circle-o fa-2x"></i>
+						<i class="fa fa-check-circle-o fa-2x"></i>
+						<span> Tous</span>
+					</label>
+					<label class="btn">
+						<input type="radio" class="form-control" formControlName="filter" value="now">
+						<i class="fa fa-circle-o fa-2x"></i>
+						<i class="fa fa-check-circle-o fa-2x"></i>
+						<span> En cours</span>
+					</label>
+				</div>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+			</div>
+		</form>
+	</div>-->
+
+	<div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th (click)="sortById()">#</th>
+					<th (click)="sortByLastName()">Nom</th>
+					<th (click)="sortByFirstName()">Prénom</th>
+					<th (click)="sortByLogement()">Logement</th>
+					<th (click)="sortByDateDebut()">Début</th>
+					<th (click)="sortByDateFin()">Fin</th>
+					<th>Ajouté le</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let bail of bails">
+					<td style="vertical-align: middle">{{ bail.idBail }}</td>
+					<td style="vertical-align: middle">{{ bail.client.nomClient }}</td>
+					<td style="vertical-align: middle">{{ bail.client.prenomClient }}</td>
+					<td style="vertical-align: middle">{{ bail.logement.designation }}</td>
+					<td *ngIf="!edit || bail !== selectedBail" style="vertical-align: middle">{{ bail.dateDebut | date: 'dd/MM/yyyy' }}</td>
+					<td *ngIf="edit && bail === selectedBail" style="vertical-align: middle"><input type="date" [(ngModel)]="bail.dateDebut" placeholder="{{ bail.dateDebut | date: 'yyyy-MM-dd' }}"></td>
+					<td *ngIf="!edit || bail !== selectedBail" style="vertical-align: middle">{{ bail.dateFin | date: 'dd/MM/yyyy' }}</td>
+					<td *ngIf="edit && bail === selectedBail" style="vertical-align: middle"><input type="date" [(ngModel)]="bail.dateFin" placeholder="{{ bail.dateFin | date: 'yyyy-MM-dd' }}"></td>
+					<td style="vertical-align: middle">{{ bail.ajoutBail | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+					<td style="vertical-align: middle">
+						<a [routerLink]="['/house', bail.logement.idLogement]">
+							<img src="assets/images/{{ bail.logement.photo }}" class="img-circle" height="75" width="100"/>
+						</a>
+					</td>
+					<td *ngIf="bail === selectedBail" style="vertical-align: middle">
+						<!--<div class="btn-group spacer">-->
+							<button class="btn btn-default btn-md" (click)="onSelect(bail)" title="Annuler">
+								<span *ngIf="!edit" class="glyphicon glyphicon-pencil"></span>
+								<span *ngIf="edit" class="glyphicon glyphicon-remove"></span>
+							</button>
+							<button class="btn btn-default btn-md" (click)="save(bail)" title="Enregistrer">
+								<span class="glyphicon glyphicon-floppy-disk"></span>
+							</button>
+						<!--</div>-->
+					</td>
+					<td *ngIf="bail !== selectedBail" style="vertical-align: middle">
+						<button class="btn btn-default btn-md" (click)="onSelect(bail)" title="Modifier">
+          		<span class="glyphicon glyphicon-pencil"></span>
+        		</button>
+					</td>
+					<td style="vertical-align: middle">
+						<button class="btn btn-info btn-md" (click)="gotoDetail(bail)" title="Détails">
+          		<span class="glyphicon glyphicon-info-sign"></span>
+        		</button>
+					</td>
+					<td style="vertical-align: middle">
+						<button class="btn btn-danger btn-md" (click)="onDelete(bail)" title="Supprimer">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td> 
+				</tr>
+			</tbody>
+		</table>
+	<div>
+
+	<div>
+		<ul class="pagination pagination-lg">
+			<li *ngIf="currentPage > 0"><a (click)="gotoPage(currentPage-1)"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+			<li *ngFor="let p of pages" [ngClass]="currentPage==p?'active':''">
+				<a (click)="gotoPage(p)">{{p+1}}</a>
+			</li>
+			<li *ngIf="currentPage+1 < totalPages"><a (click)="gotoPage(currentPage+1)"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+		</ul>
+	</div>
+
+</div>

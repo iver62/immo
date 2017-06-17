@@ -1,0 +1,41 @@
+<div class="container col-xs-8 col-sm-6 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-4 spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading">Saisie d'un bail</div>
+		<div class="panel-body">
+			<form (ngSubmit)="onBailSubmit()" [formGroup]="formGroupBail">
+				<div class="form-group">
+					<select formControlName="house" id="statut" class="form-control" [(ngModel)]="selectedHouse">
+						<option value="" selected=true disabled>Logement</option>
+						<option *ngFor="let house of houses" [ngValue]="house">{{ house.designation }}</option>
+					</select>
+					<span [hidden]="formGroupBail.controls.house.valid" class="text-danger">*</span>
+				</div>
+				<div class="form-group">
+					<select formControlName="client" id="client" class="form-control" [(ngModel)]="selectedClient">
+						<option value="" selected=true disabled>Client</option>
+						<option *ngFor="let client of clients" [ngValue]="client">{{ client.nomClient }} {{ client.prenomClient }}</option>
+					</select>
+					<span [hidden]="formGroupBail.controls.client.valid" class="text-danger">*</span>
+				</div>
+				<div class="form-group">
+					<input type="date" formControlName="dateDebut" id="dateDebut" class="form-control">
+					<span [hidden]="formGroupBail.controls.dateDebut.valid" class="text-danger">*</span>
+				</div>
+				<div class="form-group">
+					<input type="date" formControlName="dateFin" id="dateFin" class="form-control">
+					<span [hidden]="formGroupBail.controls.dateFin.valid" class="text-danger">*</span>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--<button (click)="showHouses()">Houses</button>
+	<button (click)="showClients()">Clients</button>
+	<p>{{ formGroupBail.value | json }}</p>
+	<p>{{ formGroupBail.status }}</p>
+	<div *ngIf="client">
+		client: {{ selectedClient.nomClient }}
+	</div>-->
+</div>

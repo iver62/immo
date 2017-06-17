@@ -1,0 +1,16 @@
+.spacer {
+	margin-top: 20px;
+}
+th:hover {
+	cursor: pointer;
+	color: #607D8B;
+	background-color: #DDD;
+}
+
+.container {
+	position: absolute;
+}
+
+tr {
+	vertical-align: middle;
+}

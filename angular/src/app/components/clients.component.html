@@ -1,0 +1,134 @@
+<!--<input type="text" [(ngModel)]="nameFilter" placeholder="Search..."/><span class="glyphicon glyphicon-search"></span>-->
+<div class="container col-md-8 col-md-offset-2 spacer">
+  <table class="table table-striped primary">
+    <thead>
+			<tr>
+				<th>#</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Email</th>
+				<th>Date de naissance</th>
+      </tr>	
+    </thead>
+    <tbody>
+			<tr class="client" *ngFor="let client of clients" (click)="onSelect(client)">
+				<td>{{ client.idClient }}</td>
+				<td>{{ client.nomClient }}</td>
+				<td>{{ client.prenomClient }}</td>
+				<td><a href="">{{ client.emailClient }}</a></td>
+				<td>{{ client.dateNaissanceClient | date: 'dd/MM/yyyy' }}</td>
+					<!--<button class="btn btn-md" [routerLink]="">
+          	<span class="glyphicon glyphicon-envelope"></span>
+        	</button>-->
+					<!--<i class="fa fa-envelope"></i>-->
+				<!--<td><a [routerLink]="['/client', client.idClient]">Détails</a></td>-->
+				<td>
+					<button class="btn btn-info btn-md" [routerLink]="['/client', client.idClient]" title="Détails">
+          	<span class="glyphicon glyphicon-info-sign"></span>
+        	</button>
+				</td>
+				<!--<td><a onclick="return confirm('Etes vous sûr de vouloir supprimer?')">Supprimer</a></td>-->
+			</tr>
+    </tbody>
+  </table>
+</div>
+<!--<div *ngIf="selectedClient">
+  <client-detail [client]="selectedClient"></client-detail>
+</div>-->
+
+<!--<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-offset-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Clients</h3>
+					<div class="pull-right">
+						<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+							<i class="glyphicon glyphicon-filter"></i>
+						</span>
+					</div>
+				</div>
+				<div class="panel-body">
+					<input type="text" class="form-control" id="client-table-filter" data-action="filter" data-filters="#client-table" placeholder="Filter Clients" />
+				</div>
+				<table class="table table-hover" id="client-table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Email</th>
+							<th>Birthday</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let client of clients" (click)="onSelect(client)">
+							<td>{{ client.idClient }}</td>
+							<td>{{ client.nomClient }}</td>
+							<td>{{ client.prenomClient }}</td>
+							<td>{{ client.emailClient }}</td>
+							<td>{{ client.dateNaissanceClient | date: 'dd/MM/yyyy' }}</td>
+							<td><a [routerLink]="['/client', client.idClient]">Détails</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>-->
+
+<script>
+	/**
+*   I don't recommend using this plugin on large tables, I just wrote it to make the demo useable. It will work fine for smaller tables 
+*   but will likely encounter performance issues on larger tables.
+*
+*		<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+*		$(input-element).filterTable()
+*		
+*	The important attributes are 'data-action="filter"' and 'data-filters="#table-selector"'
+*/
+(function(){
+    'use strict';
+	var $ = jQuery;
+	$.fn.extend({
+		filterTable: function(){
+			return this.each(function(){
+				$(this).on('keyup', function(e){
+					$('.filterTable_no_results').remove();
+					var $this = $(this), search = $this.val().toLowerCase(), target = $this.attr('data-filters'), $target = $(target), $rows = $target.find('tbody tr');
+					if(search == '') {
+						$rows.show(); 
+					} else {
+						$rows.each(function(){
+							var $this = $(this);
+							$this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+						})
+						if($target.find('tbody tr:visible').size() === 0) {
+							var col_count = $target.find('tr').first().find('td').size();
+							var no_results = $('<tr class="filterTable_no_results"><td colspan="'+col_count+'">No results found</td></tr>')
+							$target.find('tbody').append(no_results);
+						}
+					}
+				});
+			});
+		}
+	});
+	$('[data-action="filter"]').filterTable();
+})(jQuery);
+
+$(function(){
+    // attach table filter plugin to inputs
+	$('[data-action="filter"]').filterTable();
+	
+	$('.container').on('click', '.panel-heading span.filter', function(e){
+		var $this = $(this), 
+				$panel = $this.parents('.panel');
+		
+		$panel.find('.panel-body').slideToggle();
+		if($this.css('display') != 'none') {
+			$panel.find('.panel-body input').focus();
+		}
+	});
+	$('[data-toggle="tooltip"]').tooltip();
+})
+</script>

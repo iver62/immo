@@ -1,0 +1,202 @@
+<div class="container col-md-10 col-md-offset-1 spacer">
+	<div>
+		<house-search></house-search>
+	</div>
+
+<!--<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+	<div class="btn-group btn-group" data-toggle="buttons">
+		<label class="btn active">
+			<input type="radio" class="form-control" formControlName="statut" value="" checked>
+			<i class="fa fa-square-o fa-2x"></i>
+			<i class="fa fa-check-square-o fa-2x"></i>
+			<span> Tous</span>
+		</label>
+		<label class="btn">
+			<input type="radio" class="form-control" formControlName="statut" value="occupe">
+			<i class="fa fa-square-o fa-2x"></i>
+			<i class="fa fa-check-square-o fa-2x"></i>
+			<span> Occupé</span>
+		</label>
+		<label class="btn">
+			<input type="radio" class="form-control" formControlName="statut" value="disponible">
+			<i class="fa fa-square-o fa-2x"></i>
+			<i class="fa fa-check-square-o fa-2x"></i>
+			<span> Disponible</span>
+		</label>
+		<label class="btn">
+			<input type="radio" class="form-control" formControlName="statut" value="attente">
+			<i class="fa fa-square-o fa-2x"></i>
+			<i class="fa fa-check-square-o fa-2x"></i>
+			<span> En attente</span>
+		</label>
+		<label class="btn">
+			<input type="radio" class="form-control" formControlName="statut" value="reparation">
+			<i class="fa fa-square-o fa-2x"></i>
+			<i class="fa fa-check-square-o fa-2x"></i>
+			<span> En réparation</span>
+		</label>
+	</div>
+	<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+</form>-->
+
+<!--<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+	<label class="checkbox-inline"><input class="form-control" formControlName="statut" type="radio" value="" checked>Tous</label>
+	<label class="checkbox-inline"><input class="form-control" formControlName="statut" type="radio" value="occupe">Occupé</label>
+	<label class="checkbox-inline"><input class="form-control" formControlName="statut" type="radio" value="disponible">Disponible</label>
+	<label class="checkbox-inline"><input class="form-control" formControlName="statut" type="radio" value="attente">En attente</label>
+	<label class="checkbox-inline"><input class="form-control" formControlName="statut" type="radio" value="reparation">En réparation</label>
+	<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+</form>-->
+
+	<div class="spacer">
+		<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+			<!--<div>
+				<div class="btn-group spacer" data-toggle="buttons">
+					<label class="btn active">
+						<input type="radio" class="form-control" formControlName="statut" value="" checked>
+						<i class="fa fa-circle-o fa-2x"></i>
+						<i class="fa fa-check-circle-o fa-2x"></i>
+						<span> Tous</span>
+					</label>
+					<label class="btn">
+						<input type="radio" class="form-control" formControlName="statut" value="occupe">
+						<i class="fa fa-circle-o fa-2x"></i>
+						<i class="fa fa-check-circle-o fa-2x"></i>
+						<span> Occupé</span>
+					</label>
+					<label class="btn">
+						<input type="radio" class="form-control" formControlName="statut" value="disponible">
+						<i class="fa fa-circle-o fa-2x"></i>
+						<i class="fa fa-check-circle-o fa-2x"></i>
+						<span> Disponible</span>
+					</label>
+					<label class="btn">
+						<input type="radio" class="form-control" formControlName="statut" value="attente">
+						<i class="fa fa-circle-o fa-2x"></i>
+						<i class="fa fa-check-circle-o fa-2x"></i>
+						<span> En attente</span>
+					</label>
+					<label class="btn">
+						<input type="radio" class="form-control" formControlName="statut" value="reparation">
+						<i class="fa fa-circle-o fa-2x"></i>
+						<i class="fa fa-check-circle-o fa-2x"></i>
+						<span> En réparation</span>
+					</label>
+				</div>
+			</div>-->
+			<div class="btn-group spacer text-center" data-toggle="buttons">
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="size" value="20">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-check-circle-o fa-2x"></i>
+					<span> 20</span>
+				</label>
+				<label class="btn active">
+					<input type="radio" class="form-control" formControlName="size" value="16" checked>
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-check-circle-o fa-2x"></i>
+					<span> 16</span>
+				</label>
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="size" value="12">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-check-circle-o fa-2x"></i>
+					<span> 12</span>
+				</label>
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="size" value="8">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-check-circle-o fa-2x"></i>
+					<span> 8</span>
+				</label>
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="size" value="4">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-check-circle-o fa-2x"></i>
+					<span> 4</span>
+				</label>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+			</div>
+		</form>
+	</div>
+
+	<!--<div class="container spacer col-md-2">
+		<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+			<div class="btn-group btn-group-vertical" data-toggle="buttons">
+				<label class="btn active">
+					<input type="radio" class="form-control" formControlName="statut" value="" checked>
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-dot-circle-o fa-2x"></i>
+					<span> Tous</span>
+				</label>
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="statut" value="occupe">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-dot-circle-o fa-2x"></i>
+					<span> Occupé</span>
+				</label>
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="statut" value="disponible">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-dot-circle-o fa-2x"></i>
+					<span> Disponible</span>
+				</label>
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="statut" value="attente">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-dot-circle-o fa-2x"></i>
+					<span> En attente</span>
+				</label>
+				<label class="btn">
+					<input type="radio" class="form-control" formControlName="statut" value="reparation">
+					<i class="fa fa-circle-o fa-2x"></i>
+					<i class="fa fa-dot-circle-o fa-2x"></i>
+					<span> En réparation</span>
+				</label>
+			</div>
+			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+		</form>
+	</div>-->
+
+	<div class="spacer">
+		<div>
+			<table>
+				<tr class="houses">
+					<td *ngFor="let house of houses" [class.selected]="house === selectedHouse" (click)="onSelect(house)">
+						<span class="badge">
+							<a [routerLink]="['/house', house.idLogement]">
+								<img src="assets/images/{{ house.photo }}" class="img-circle" height="150" width="200" alt="{{house.designation}}" title="{{house.designation}}"/>
+							</a>
+						</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<ul class="pagination pagination-lg">
+				<li *ngIf="currentPage > 0"><a (click)="gotoPage(currentPage-1)"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+				<li *ngFor="let p of pages" [ngClass]="currentPage==p?'active':''">
+					<a (click)="gotoPage(p)">{{p+1}}</a>
+				</li>
+				<li *ngIf="currentPage+1 < totalPages"><a (click)="gotoPage(currentPage+1)"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+<!--<div *ngIf="selectedHouse" class="col-md-8">
+	<h2>
+		{{selectedHouse.id}}
+		{{selectedHouse.designation | uppercase}} is my house
+	</h2>
+	<button (click)="gotoDetail()">View Details</button>
+</div>-->
+<!--<div class="container">
+	<ul class="nav nav-pills">
+		<li *ngFor="let p in [1, 2]; let i = index">
+			<a ng-click="">{{ p }}</a>
+		</li>
+	</ul>
+</div>-->

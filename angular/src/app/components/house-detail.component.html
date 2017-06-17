@@ -1,0 +1,66 @@
+<div *ngIf="house">
+	
+	<div class="container col-xs-8 col-sm-6 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-3 col-md-offset-1 col-lg-offset-1 spacer">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2 *ngIf="!modify">{{house.designation}}</h2>
+				<h2 *ngIf="modify"><input type="text" style="color:black" [(ngModel)]="house.designation"/></h2>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tr>
+						<td><label>Id: </label></td>
+						<td> {{ house.idLogement }}</td>
+					</tr>
+					<tr>
+						<td><label>Surface: </label></td>
+						<td *ngIf="!modify"> {{ house.surface }} m²</td>
+						<td *ngIf="modify"><input type="number" min="0" [(ngModel)]="house.surface"/></td>
+					</tr>
+					<tr>
+						<td><label>Nombre de pièces: </label></td>
+						<td *ngIf="!modify"> {{ house.nbPieces }}</td>
+						<td *ngIf="modify"><input type="number" [(ngModel)]="house.nbPieces" min="0"></td>
+					</tr>
+					<tr>
+						<td><label>Adresse: </label></td>
+						<td *ngIf="!modify"> {{ house.adresse }}</td>
+						<td *ngIf="modify"><input type="text" [(ngModel)]="house.adresse"/></td>
+					</tr>
+					<tr>
+						<td><label>Loyer: </label></td>
+						<td *ngIf="!modify"> {{ house.loyer }} €</td>
+						<td *ngIf="modify"><input type="number" min="0" [(ngModel)]="house.loyer"/></td>
+					</tr>
+					<tr>
+						<td><label>Statut: </label></td>
+						<td *ngIf="!modify"> {{ house.statut }}</td>
+						<td *ngIf="modify">
+							<select [(ngModel)]="house.statut" id="statut">
+								<option value="Disponible">Disponible</option>
+								<option value="Occupé">Occupé</option>
+								<option value="En attente">En attente</option>
+								<option value="En réparation">En réparation</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Ajouté le: </label></td>
+						<td> {{ house.date | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+					</tr>
+				</table>
+				<div class="text-center">
+					<div class="btn-group">
+						<button class="btn btn-primary" (click)="goBack()">Back</button>
+						<button *ngIf="modify" class="btn btn-primary" (click)="update()">Save</button>
+						<button class="btn btn-primary" (click)="toggleModifications()">{{ modify ? "Annuler" : "Modifier" }}</button>
+						<button class="btn btn-primary" (click)="onDelete()">Supprimer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<img src="assets/images/{{ house.photo }}" class="img-circle" height="225" width="300"/>
+	</div>
+
+</div>
