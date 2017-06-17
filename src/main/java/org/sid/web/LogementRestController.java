@@ -64,19 +64,19 @@ public class LogementRestController {
 		return logementRepository.findByDesignationStatus("%"+keyword+"%", "%"+status+"%");
 	}
 	
-	@RequestMapping(value="save", method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST)
 	public Logement save(@RequestBody Logement logement) {
 //		logement.setDate(new Date()); // fait côté client
 		return logementRepository.save(logement); 
 	}
 	
-	@RequestMapping(value="update/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="{id}", method=RequestMethod.PUT)
 	public Logement update(@PathVariable(name="id") Long id, @RequestBody Logement logement) {
 		logement.setIdLogement(id);
 		return logementRepository.save(logement); 
 	}
 	
-	@RequestMapping(value="delete/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
 	public void delete(@PathVariable(name="id") Long id) {
 		logementRepository.delete(id);
 	}

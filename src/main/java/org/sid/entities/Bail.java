@@ -17,10 +17,11 @@ public class Bail implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long idBail;
-	@JoinColumn(name="idLogement")
+	@ManyToOne
+	@JoinColumn(name="id_logement")
 	private Logement logement;
 	@ManyToOne
-	@JoinColumn(name="idClient")
+	@JoinColumn(name="id_client")
 	private Client client;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateDebut;

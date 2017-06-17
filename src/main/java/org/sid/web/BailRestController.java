@@ -47,19 +47,19 @@ public class BailRestController {
 //		return bailRepository.findCurrentBails(new PageRequest(page, size));
 //	}
 
-	@RequestMapping(value="save", method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST)
 	public Bail save(@RequestBody Bail bail) {
 		bail.getLogement().setStatut("Occupé");
 		return bailRepository.save(bail); 
 	}
 
-	@RequestMapping(value="update/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="{id}", method=RequestMethod.PUT)
 	public Bail update(@PathVariable(name="id") Long id, @RequestBody Bail bail) {
 		bail.setIdBail(id);
 		return bailRepository.save(bail); 
 	}
 
-	@RequestMapping(value="delete/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
 	public void delete(@PathVariable(name="id") Long id) {
 		bailRepository.delete(id);; 
 	}

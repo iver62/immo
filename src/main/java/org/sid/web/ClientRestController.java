@@ -34,7 +34,7 @@ public class ClientRestController {
 		return clientRepository.findOne(id);
 	}
 	
-	@RequestMapping(value="/get", method=RequestMethod.GET)
+	@RequestMapping(value="get", method=RequestMethod.GET)
 	public Client getClientByName(
 			@RequestParam(name="last", defaultValue="") String nom,
 			@RequestParam(name="first", defaultValue="") String prenom) {
@@ -54,13 +54,13 @@ public class ClientRestController {
 		return clientRepository.save(client); 
 	}
 	
-	@RequestMapping(value="update/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="{id}", method=RequestMethod.PUT)
 	public Client update(@PathVariable(name="id") Long id, @RequestBody Client client) {
 		client.setIdClient(id);
 		return clientRepository.save(client); 
 	}
 	
-	@RequestMapping(value="delete/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
 	public void delete(@PathVariable(name="id") Long id) {
 		clientRepository.delete(id);
 	}
