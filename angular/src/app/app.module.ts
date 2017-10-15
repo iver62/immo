@@ -40,13 +40,13 @@ import { HouseService } from './services/house.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-	  AppRoutingModule,
+	AppRoutingModule,
     ReactiveFormsModule,
   ],
   providers: [
     BailService,
     HouseService,
-	  ClientService,
+	ClientService,
     HouseSearchService
   ],
   bootstrap: [AppComponent]
